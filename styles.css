@@ -393,11 +393,11 @@ header.sticky {
     .navbar {
         position: absolute;
         top: 100%;
-        right: -100%; /* Moves off-screen */
+        right: -100%; 
         width: 270px;
-        height: auto; /* Change to auto for vertical layout */
+        height: auto; 
         display: flex;
-        flex-direction: column; /* Stack items vertically */
+        flex-direction: column;
         background: #101821;
         padding: 20px 15px;
         gap: 0.5rem;
