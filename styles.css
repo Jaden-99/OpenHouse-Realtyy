@@ -93,11 +93,14 @@ header {
     margin-left: 5px;
     z-index: 10001;
     cursor: pointer;
-    display: none;
+    display: none; /* Initially hidden on larger screens */
+    border: none; /* Ensure no border */
+    background: none; /* No background */
+    outline: none; /* Remove outline */
 }
 
 section {
-    padding: 100px 15% 70px; 
+    padding:  100px 15% 70px;
 }
 
 .home {
@@ -164,7 +167,7 @@ section {
 
 header.sticky {
     padding: 8px 15px;
-    background: #101821; 
+    background: #101821;
 }
 
 .feature {
@@ -383,25 +386,25 @@ header.sticky {
     #menu-icon {
         display: block;
     }
-/* Default state: navbar hidden */
-.navbar {
-    position: absolute;
-    top: 100%;
-    right: -100%; /* Moves off-screen */
-    width: 270px;
-    height: 100vh;
-    display: flex;
-    background: #101821;
-    padding: 20px 15px;
-    gap: 0.5rem;
-    text-align: left;
-    transition: all 0.5s ease;
-}
+    /* Default state: navbar hidden */
+    .navbar {
+        position: absolute;
+        top: 100%;
+        right: -100%; /* Moves off-screen */
+        width: 270px;
+        height: 100vh;
+        display: flex;
+        background: #101821;
+        padding: 20px 15px;
+        gap: 0.5rem;
+        text-align: left;
+        transition: all 0.5s ease;
+    }
 
-/* Show navbar when open */
-.navbar.open {
-    right: 0; /* Slide-in effect */
-}
+    /* Show navbar when open */
+    .navbar.open {
+        right: 0; /* Slide-in effect */
+    }
 
     :root {
         --h1-font: 4rem;
