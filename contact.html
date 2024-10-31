@@ -133,6 +133,33 @@
             padding: 8px 15px;
             background: #101821; 
         }
+        @media (max-width: 1170px) {
+            #menu-icon {
+                display: block;
+            }
+            .navbar {
+                position: absolute;
+                top: 100%;
+                right: -100%;
+                width: 270px;
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                background: #101821;
+                padding: 20px 15px;
+                gap: 0.5rem;
+                text-align: left;
+                transition: all 0.5s ease;
+            }
+            .navbar a {
+                display: block;
+                font-size: 20px;
+                padding: 15px;
+            }
+            .navbar.open {
+                right: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -184,6 +211,13 @@
 
             // Clear the form
             document.getElementById('contactForm').reset();
+        });
+
+        const menuIcon = document.getElementById('menu-icon');
+        const navbar = document.querySelector('.navbar');
+
+        menuIcon.addEventListener('click', () => {
+            navbar.classList.toggle('open');
         });
     </script>
 </body>
