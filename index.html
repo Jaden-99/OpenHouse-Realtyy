@@ -15,7 +15,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    
     <!-- Header -->
     <header>
         <a href="#" class="logo">
@@ -30,7 +29,7 @@
         <div class="h-btn">
             <a href="login.html" class="h-btn1">Login</a>
             <a href="sign-up.html" class="h-btn2">Sign Up</a>
-            <div id="menu-icon"><i class="bx bx-menu"></i></div>
+            <div class="bx bx-menu" id="menu-icon"></div>
         </div>
     </header>
 
@@ -53,7 +52,7 @@
             </div>
         </div>
         <div class="home-img">
-            <image src="images/hero.png" alt="Hero Image">
+            <img src="images/hero.png" alt="Hero Image">
         </div>
     </section>  
     
@@ -100,9 +99,9 @@
                         <i class="bx bx-bath"></i> 
                         2 Bathrooms
                     </a>
-                    <a href="#" class="Residence -list">
+                    <a href="#" class="Residence-list">
                         <i class="bx bx-shape-square"></i> 
-                         1203 sqft
+                        1203 sqft
                     </a>
                 </div>
             </div>
@@ -153,7 +152,7 @@
     <!-- About Section -->
     <section class="about">
         <div class="about-img">
-            <image src="images/Group 1.png" alt="About Image">
+            <img src="images/Group 1.png" alt="About Image">
         </div>
         <div class="about-text">
             <h2>We Can Help You Out!</h2>
@@ -190,7 +189,7 @@
         <div class="contact-content">
             <h4>Commercial Properties</h4>
             <ul>
-                <li><a href="#">Offices</a ></li>
+                <li><a href="#">Offices</a></li>
                 <li><a href="#">Retail Spaces</a></li>
                 <li><a href="#">Warehouses</a></li>
                 <li><a href="#">Mixed-use Developments</a></li>
@@ -210,16 +209,16 @@
     <script>
         const properties = [
             { name: "The Olive Grove", location: "Cape Town" },
- { name: "The Manor on Maple", location: "Johannesburg " },
+            { name: "The Manor on Maple", location: "Johannesburg" },
             { name: "Vineyard Estate", location: "Cape Town" },
             { name: "Modern Family House", location: "Los Angeles, CA" },
- { name: "Luxury Apartment", location: "New York, NY" },
+            { name: "Luxury Apartment", location: "New York, NY" },
             { name: "Beachfront Villa", location: "Miami, FL" },
             { name: "Gated Waterfront Estate", location: "Tennessee, NY" },
- { name: "Mountain Retreat", location: "Coloroado CO" },
+            { name: "Mountain Retreat", location: "Colorado, CO" },
             { name: "Lakefront Cottage", location: "Wisconsin, WI" },
             { name: "Rustic Farmhouse", location: "Texas, TX" },
- { name: "Coastal Condo", location: "California, CA" },    
+            { name: "Coastal Condo", location: "California, CA" },    
         ];
 
         function showSuggestions(value) {
@@ -234,7 +233,7 @@
 
             results.forEach(property => {
                 const suggestionItem = document.createElement('div');
-                suggestionItem.textContent = property.name + ' - ' + property.location;
+                suggestionItem.textContent = `${property.name} - ${property.location}`;
                 suggestionItem.classList.add('suggestion-item');
                 suggestionItem.onclick = () => {
                     document.getElementById('searchInput').value = property.location; // Set input value
@@ -273,6 +272,5 @@
             background: rgb(31, 31, 119);
         }
     </style>
-    <script src="script.js"></script>
 </body>
 </html>
