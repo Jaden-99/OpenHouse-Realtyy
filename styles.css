@@ -386,16 +386,14 @@ header.sticky {
 
 @media (max-width: 1170px) {
     #menu-icon {
-        display: block; /* Show the menu icon on smaller screens */
+        display: block;
     }
-    
-    /* Default state: navbar hidden */
     .navbar {
         position: absolute;
         top: 100%;
-        right: -100%; 
+        right: -100%;
         width: 270px;
-        height: auto; 
+        height: 100vh;
         display: flex;
         flex-direction: column;
         background: #101821;
@@ -404,10 +402,13 @@ header.sticky {
         text-align: left;
         transition: all 0.5s ease;
     }
-
-    /* Show navbar when open */
+    .navbar a {
+        display: block;
+        font-size: 20px;
+        padding: 15px;
+    }
     .navbar.open {
-        right: 0; /* Slide-in effect */
+        right: 0;
     }
 
     :root {
