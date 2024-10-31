@@ -4,178 +4,103 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="styles.css">
     <style>
-        * {
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-            font-family: 'Work Sans', sans-serif;
-            text-decoration: none;
-            list-style: none;
-        }
-
         body {
             background: #121b25;
             color: #ffffff;
+            font-family: 'Work Sans', sans-serif;
         }
-
-        header {
-            width: 100%;
-            position: fixed;
-            top: 0;
-            right: 0;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 30px 15%;
-            background: #121b25;
-            transition: all .50s ease;
-        }
-
-        .logo img {
-            height: auto;
-            width: 100px;
-        }
-
-        .navbar {
-            display: flex;
-        }
-
-        .navbar a {
-            padding: 10px 25px;
-            font-size: 1.1rem;
-            color: #d6d6d6;
-            transition: all .40s ease;
-        }
-
-        .navbar a:hover {
-            color: #ffffff;
-        }
-
-        section.contact {
-            padding: 150px 15% 70px;
+        .wrapper {
             max-width: 800px;
-            margin: 0 auto;
+            margin: 100px auto;
+            padding: 20px;
             background: #1c2a35;
-            border-radius: 8px;
+            border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
-
-        h2 {
+        h1 {
             text-align: center;
             margin-bottom: 20px;
             font-size: 2.6rem;
         }
-
-        .contact-info {
-            margin-bottom: 30px;
-            text-align: center;
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
         }
-
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        textarea {
+        .contact-form input, .contact-form textarea {
+            width: 100%;
             padding: 10px;
-            margin-bottom: 15px;
             border: 1px solid #1aa090;
             border-radius: 4px;
             background: #2a3b45;
             color: #ffffff;
         }
-
+        .contact-form textarea {
+            grid-column: span 2;
+            resize: vertical;
+        }
         button.btn {
+            width: 100%;
+            padding: 10px;
             background-color: #1aa090;
             color: white;
-            padding: 10px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
             transition: background-color 0.3s;
         }
-
         button.btn:hover {
             background-color: #159a7e;
         }
-
-        #successMessage {
-            display: none;
-            color: green;
+        .contact-info {
+            margin-top: 40px;
             text-align: center;
-            margin-top: 20px;
         }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: #1c2a35;
-            color: #d6d6d6;
-            position: relative;
-            bottom: 0;
-            width: 100%;
+        .contact-info p {
+            margin-bottom: 10px;
+        }
+        .contact-info a {
+            color: #1aa090;
+            transition: color 0.3s;
+        }
+        .contact-info a:hover {
+            color: #ffffff;
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="images/logo.png" alt="Logo">
-        </div>
-        <nav class="navbar">
-            <a href="index.html">Home</a>
-            <a href="about.html">About Us</a>
-            <a href="contact.html">Contact Us</a>
-            <a href="properties.html">Properties</a>
-        </nav>
-    </header>
-
-    <section class="contact">
-        <h2>Get in Touch with Us</h2>
-        <div class="contact-info">
-            
-            <p>If you have any questions or inquiries, feel free to reach out to us. Our dedicated team is here to assist you!</p><br>
-            <h4>Contact Information</h4><br>
-            <p><strong>Phone:</strong> (073) 513 8574</p><br>
-            <p><strong>Email:</strong> OpenhouseRealty@renitz.com</p><br>
-            <p><strong>Address:</strong> 050 Kingsman Road, Pretoria</p><br>
-        </div>
-        <form id="contactForm">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
- <label for="message">Message:</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
-            
+    <div class="wrapper">
+        <h1>Contact Us</h1>
+        <form id="contactForm" class="contact-form">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <input type="text" id="subject" placeholder="Subject" required>
+            <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
             <button type="submit" class="btn">Send Message</button>
         </form>
-        <div id="successMessage">Email has been successfully sent to the company!</div>
-    </section>
-
-    <footer>
-        <p>&copy; 2024 OpenhouseRealty. All Rights Reserved.</p>
-    </footer>
-
+        <div class="contact-info">
+            <p>Email: <a href="mailto:info@openhouserealty.com">info@openhouserealty.com</a></p>
+            <p>Phone: <a href="tel:+1234567890">+1 (234) 567-890</a></p>
+            <p>Address: 123 Realty St, City, State, ZIP</p>
+        </div>
+    </div>
     <script>
         document.getElementById('contactForm').addEventListener('submit', function(event) {
             event.preventDefault();
 
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
             const message = document.getElementById('message').value;
 
-            const emails = JSON.parse(localStorage.getItem('emails')) || [];
-            emails.push({ name, email, message });
-            localStorage.setItem('emails', JSON.stringify(emails));
+            // Simulate sending the message (replace with actual backend integration)
+            console.log("Sending message:", { name, email, subject, message });
+            alert("Message sent successfully!");
 
-            document.getElementById('successMessage').style.display = 'block';
-
+            // Clear the form
             document.getElementById('contactForm').reset();
         });
     </script>
