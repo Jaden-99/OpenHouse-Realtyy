@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Properties - RealHome</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f9;
+        }
+
+        header {
+            background-color: #00274d;
+            color: #ffffff;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        nav {
+            margin-top: 0.5rem;
+        }
+
+        nav a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        #property-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .property-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .property-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .property-card h3 {
+            margin: 10px;
+            font-size: 1.3rem;
+            color: #333;
+        }
+
+        .property-card p {
+            margin: 10px;
+            color: #555;
+        }
+
+        .property-card .price {
+            font-size: 1rem;
+            color: #007BFF;
+            font-weight: bold;
+        }
+
+        .property-card a {
+            display: inline-block;
+            margin: 10px;
+            text-decoration: none;
+            color: #007BFF;
+        }
+
+        .property-card:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Find Your Perfect Home</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="property-grid">
+            <!-- Existing Property Cards -->
+            <div class="property-card">
+                <img src="images/properties3.png" alt="Modern Family Home">
+                <h3>Modern Family Home</h3>
+                <p class="price">$450,000</p>
+                <p>Location: Los Angeles, CA</p>
+                <a href="property-details.html?id=1">View Details</a>
+            </div>
+
+            <div class="property-card">
+                <img src="images/properties2.png" alt="Luxury Apartment">
+                <h3>Luxury Apartment</h3>
+                <p class="price">$750,000</p>
+                <p>Location: New York, NY</p>
+                <a href="property-details.html?id=2">View Details</a>
+            </div>
+
+            <div class="property-card">
+                <img src="images/properties1.png" alt="Beachfront Villa">
+                <h3>Beachfront Villa</h3>
+                <p class="price">$1,200,000</p>
+                <p>Location: Miami, FL</p>
+                <a href="property-details.html?id=3">View Details</a>
+            </div>
+
+            <div class="property-card">
+                <img src="images/properties4.png" alt="Gated Waterfront Estate">
+                <h3>Gated Waterfront Estate</h3>
+                <p class="price">$2,500,000</p>
+                <p>Location: Tennessee, NY</p>
+                <a href="property-details.html?id=4">View Details</a>
+            </div>
+
+            <div class="property-card">
+                <img src="images/properties5.png" alt="Mountain Retreat">
+                <h3>Mountain Retreat</h3>
+                <p class="price">$950,000</p>
+                <p>Location: Colorado, CO</p>
+                <a href="property-details.html?id=5">View Details</a>
+            </div>
+
+            <div class="property-card">
+                <img src="images/properties6.png" alt="Lakefront Cottage">
+                <h3>Lakefront Cottage</h3>
+                <p class="price">$750,000</p>
+                <p>Location: Wisconsin, WI</p>
+                <a href="property-details.html?id=6">View Details</a>
+            </div>
+
+            <div class="property-card">
+                <img src="images/properties8.png" alt="Rustic Farmhouse">
+                <h3>Rustic Farmhouse</h3>
+                <p class="price">$1,000,000</p>
+                <p>Location: Texas, TX</p>
+                <a href="property-details.html?id=7">View Details</a>
+            </div>
+
+            <div class="property-card">
+                <img src="images/properties7.png" alt="Coastal Condo">
+                <h3>Coastal Condo</h3>
+                <p class="price">$1,200,000</p>
+                <p>Location: California, CA</p>
+                <a href="property-details.html?id=8">View Details</a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // You can add JavaScript here if needed for dynamic content or interactivity.
+    </script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your existing CSS -->
+    <style>
+        /* Add your existing styles here or keep them in styles.css */
+        body {
+            background: #121b25;
+            color: #ffffff;
+        }
+        .wrapper {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+            background: #1c2a35;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2.6rem;
+        }
+        .input-box {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .input-box input {
+            width: 100%;
+            padding: 10px 10px 10px 40px;
+            border: 1px solid #1aa090;
+            border-radius: 4px;
+            background: #2a3b45;
+            color: #ffffff;
+        }
+        button.btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #1aa090;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button.btn:hover {
+            background-color: #159a7e;
+        }
+        .register-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .register-link a {
+            color: #1aa090;
+            transition: color 0.3s;
+        }
+        .register-link a:hover {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <form id="signUpForm">
+        <h1>Sign Up</h1>
+        <div class="input-box">
+            <i class='bx bxs-user'></i>
+            <input type="text" id="username" placeholder="Username" required>
+        </div>
+        <div class="input-box">
+            <i class='bx bxs-envelope'></i>
+            <input type="email" id="email" placeholder="Email" required>
+        </div>
+        <div class="input-box">
+            <i class='bx bxs-lock-alt'></i>
+            <input type="password" id="password" placeholder="Password" required>
+        </div>
+        <div class="input-box">
+            <i class='bx bxs-lock-alt'></i>
+            <input type="password" id="repeatPassword" placeholder="Repeat Password" required>
+        </div>
+
+        <button type="submit" class="btn">Sign Up</button>
+
+        <div class="register-link">
+            <p>Already have an account? <a href="login.html">Login</a></p>
+        </div>
+    </form>
+</div>
+
+<script>
+    document.getElementById('signUpForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const username = document.getElementById('username').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const repeatPassword = document.getElementById('repeatPassword').value;
+
+        if (password !== repeatPassword) {
+            alert('Passwords do not match');
+            return;
+        }
+
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+        users.push({ username, email, password });
+        localStorage.setItem('users', JSON.stringify(users));
+
+        alert('Registration successful! You can now log in.');
+        window.location.href = 'login.html'; // Redirect to login page
+    });
+</script>
+</body>
+</html>

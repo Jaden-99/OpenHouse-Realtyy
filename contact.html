@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Work Sans', sans-serif;
+            text-decoration: none;
+            list-style: none;
+        }
+
+        body {
+            background: #121b25;
+            color: #ffffff;
+        }
+
+        header {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 30px 15%;
+            background: #121b25;
+            transition: all .50s ease;
+        }
+
+        .logo img {
+            height: auto;
+            width: 100px;
+        }
+
+        .navbar {
+            display: flex;
+        }
+
+        .navbar a {
+            padding: 10px 25px;
+            font-size: 1.1rem;
+            color: #d6d6d6;
+            transition: all .40s ease;
+        }
+
+        .navbar a:hover {
+            color: #ffffff;
+        }
+
+        section.contact {
+            padding: 150px 15% 70px;
+            max-width: 800px;
+            margin: 0 auto;
+            background: #1c2a35;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2.6rem;
+        }
+
+        .contact-info {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #1aa090;
+            border-radius: 4px;
+            background: #2a3b45;
+            color: #ffffff;
+        }
+
+        button.btn {
+            background-color: #1aa090;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button.btn:hover {
+            background-color: #159a7e;
+        }
+
+        #successMessage {
+            display: none;
+            color: green;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #1c2a35;
+            color: #d6d6d6;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="Logo">
+        </div>
+        <nav class="navbar">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="properties.html">Properties</a>
+        </nav>
+    </header>
+
+    <section class="contact">
+        <h2>Get in Touch with Us</h2>
+        <div class="contact-info">
+            
+            <p>If you have any questions or inquiries, feel free to reach out to us. Our dedicated team is here to assist you!</p><br>
+            <h4>Contact Information</h4><br>
+            <p><strong>Phone:</strong> (073) 513 8574</p><br>
+            <p><strong>Email:</strong> OpenhouseRealty@renitz.com</p><br>
+            <p><strong>Address:</strong> 050 Kingsman Road, Pretoria</p><br>
+        </div>
+        <form id="contactForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+ <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+            
+            <button type="submit" class="btn">Send Message</button>
+        </form>
+        <div id="successMessage">Email has been successfully sent to the company!</div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 OpenhouseRealty. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            const emails = JSON.parse(localStorage.getItem('emails')) || [];
+            emails.push({ name, email, message });
+            localStorage.setItem('emails', JSON.stringify(emails));
+
+            document.getElementById('successMessage').style.display = 'block';
+
+            document.getElementById('contactForm').reset();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your existing CSS -->
+    <style>
+        /* Existing styles */
+        body {
+            background: #121b25;
+            color: #ffffff;
+        }
+        .wrapper {
+            max-width: 800px;
+            margin: 100px auto;
+            padding: 20px;
+            background: #1c2a35;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2.6rem;
+        }
+        .user-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .user-list li {
+            padding: 10px;
+            border-bottom: 1px solid #1aa090;
+        }
+        .user-list li:last-child {
+            border-bottom: none;
+        }
+        .btn {
+            display: block;
+            text-align: center;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background: #1aa090;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #159a7e;
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <h1>Registered Users</h1>
+    <a href="view-emails.html" class="btn">View Emails Sent to Company</a>
+    <ul class="user-list" id="userList"></ul>
+</div>
+
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.x/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.x/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.x/firebase-firestore.js"></script>
+
+<!-- Initialize Firebase -->
+<script>
+    const firebaseConfig = {
+        apiKey: "YOUR_API_KEY",
+        authDomain: "YOUR_AUTH_DOMAIN",
+        projectId: "YOUR_PROJECT_ID",
+        storageBucket: "YOUR_STORAGE_BUCKET",
+        messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+        appId: "YOUR_APP_ID"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+</script>
+
+<script>
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    // Function to fetch users from Firestore
+    function fetchUsers() {
+        db.collection("users").get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                const userData = doc.data();
+                const listItem = document.createElement('li');
+                listItem.textContent = `Username: ${userData.username}, Email: ${userData.email}`;
+                userList.appendChild(listItem);
+            });
+        }).catch((error) => {
+            console.error("Error fetching users: ", error);
+        });
+    }
+
+    // Check authentication state
+    auth.onAuthStateChanged((user) => {
+        if (user) {
+            // User is signed in, fetch users
+            fetchUsers();
+        } else {
+            // No user is signed in, redirect or show an error
+            window.location.href = 'login.html'; // Redirect to your login page
+        }
+    });
+</script>
+</body>
+</html>

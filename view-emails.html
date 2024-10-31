@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Emails</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your existing CSS -->
+    <style>
+        body {
+            background: #121b25;
+            color: #ffffff;
+            font-family: 'Work Sans', sans-serif;
+        }
+        .wrapper {
+            max-width: 800px;
+            margin: 100px auto;
+            padding: 20px;
+            background: #1c2a35;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2.6rem;
+        }
+        .email-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .email-list li {
+            padding: 10px;
+            border-bottom: 1px solid #1aa090;
+        }
+        .email-list li:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <h1>Emails Sent to the Company</h1>
+    <ul class="email-list" id="emailList"></ul>
+</div>
+
+<script>
+    const emails = JSON.parse(localStorage.getItem('emails')) || [];
+    const emailList = document.getElementById('emailList');
+
+    emails.forEach(email => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `Name: ${email.name}, Email: ${email.email}, Message: ${email.message}`;
+        emailList.appendChild(listItem);
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenHouse Realty</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+    <!-- Box icons link -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+    <!-- Google Fonts Link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo">
+            <img src="images/logo.png" alt="Logo">
+        </a>
+        <ul class="navbar">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="properties.html">Properties</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>        
+        <div class="h-btn">
+            <a href="login.html" class="h-btn1">Login</a>
+            <a href="sign-up.html" class="h-btn2">Sign Up</a>
+            <div class="bx bx-menu" id="menu-icon"></div>
+        </div>
+    </header>
+
+    <!-- Home Section -->
+    <section class="home">
+        <div class="home-text">
+            <h1>The Perfect Home is Waiting For You!</h1>
+            <p>Finding your dream home is more than a search—it is a journey. 
+                Whether it is a cozy starter, modern apartment, or peaceful retreat,
+                we are here to make the process exciting and stress-free. Discover properties tailored to your lifestyle, 
+                guided by experts who understand that a home is where memories are made. Explore listings, connect with us,
+                and unlock the door to your perfect home<br>
+            </p>
+            <div class="h-search">
+                <form id="searchForm">
+                    <input type="search" id="searchInput" placeholder="Search By Location..." class="search-input" oninput="showSuggestions(this.value)">
+                    <div id="suggestions" class="suggestions-box"></div>
+                    <input type="submit" value="Search">
+                </form>
+            </div>
+        </div>
+        <div class="home-img">
+            <image src="images/hero.png" alt="Hero Image">
+        </div>
+    </section>  
+    
+    <!-- Feature Section -->
+    <section class="feature">
+        <div class="center-left">
+            <h2>Features</h2>
+        </div>
+        <div class="feature-content">
+            <div class="f-img">
+                <img src="images/f1.png" alt="Feature 1">
+            </div>
+            <div class="f-img">
+                <img src="images/f2.png" alt="Feature 2">
+            </div>
+            <div class="f-img">
+                <img src="images/f3.png" alt="Feature 3">
+            </div>
+            <div class="f-img">
+                <img src="images/f4.png" alt="Feature 4">
+            </div>
+            <div class="f-img">
+                <img src="images/f5.png" alt="Feature 5">
+            </div>
+        </div>
+    </section>
+
+    <!-- Property Section -->
+    <section class="property">
+        <div class="center-left">
+            <h2>Popular Residence</h2>
+        </div>
+        <div class="property-content">
+            <div class="row">
+                <img src="images/p1.png" alt="Property 1">
+                <h5>The Olive Grove</h5>
+                <p>1090 Constantia Drive, Cape Town, South Africa</p>
+                <div class="list">
+                    <a href="#" class="Residence-list">
+                        <i class="bx bx-bed"></i> 
+                        4 Bedrooms
+                    </a>
+                    <a href="#" class="Residence-list">
+                        <i class="bx bx-bath"></i> 
+                        2 Bathrooms
+                    </a>
+                    <a href="#" class="Residence -list">
+                        <i class="bx bx-shape-square"></i> 
+                         1203 sqft
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <img src="images/p2.png" alt="Property 2">
+                <h5>The Manor on Maple</h5>
+                <p>1688 Bryanston, Johannesburg, South Africa</p>
+                <div class="list">
+                    <a href="#" class="Residence-list">
+                        <i class="bx bx-bed"></i> 
+                        4 Bedrooms
+                    </a>
+                    <a href="#" class="Residence-list">
+                        <i class="bx bx-bath"></i> 
+                        2 Bathrooms
+                    </a>
+                    <a href="#" class="Residence-list">
+                        <i class="bx bx-shape-square"></i> 
+                        1203 sqft
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <img src="images/p3.png" alt="Property 3">
+                <h5>Vineyard Estate</h5>
+                <p>1821 Stellenbosch, Cape Town, South Africa</p>
+                <div class="list">
+                    <a href="#" class="Residence-list">
+                        <i class="bx bx-bed"></i> 
+                        4 Bedrooms
+                    </a>
+                    <a href="#" class="Residence-list">
+                        <i class="bx bx-bath"></i> 
+                        2 Bathrooms
+                    </a>
+                    <a href="#" class="Residence-list">
+                        <i class="bx bx-shape-square"></i> 
+                        1203 sqft
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="center-btn">
+            <a href="properties.html" class="btn">View All Properties</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="about-img">
+            <image src="images/Group 1.png" alt="About Image">
+        </div>
+        <div class="about-text">
+            <h2>We Can Help You Out!</h2>
+            <p>At OpenHouse Realty, we see finding a home as more than just a transaction; 
+            it is about creating a space for memories and dreams. Since our establishment in 2024,
+            our mission has been to deliver exceptional service and expertise in the real estate market,
+            ensuring your journey to the perfect home is seamless and enjoyable.</p>
+            <a href="contact.html" class="h-btn2">Get In Touch</a>
+        </div>
+    </section>
+
+    <!-- Contact Us -->
+    <section class="contact">
+        <div class="contact-content">
+            <img src="images/logo.png" alt="Logo">
+            <p>Whether you are buying or exploring, our team is here to support you.<br>
+             Contact us and let us help you find your ideal property.</p>
+            <div class="icons">
+                <a href="#"><i class="bx bxl-facebook"></i></a>
+                <a href="#"><i class="bx bxl-instagram-alt"></i></a>
+                <a href="#"><i class="bx bxl-twitter"></i></a>
+                <a href="#"><i class="bx bxl-youtube"></i></a>
+            </div>
+        </div>
+        <div class="contact-content">
+            <h4>Projects</h4>
+            <ul>
+                <li><a href="#">Houses</a></li>
+                <li><a href="#">Rooms</a></li>
+                <li><a href="#">Flats</a></li>
+                <li><a href="#">Apartments</a></li>
+            </ul>
+        </div>
+        <div class="contact-content">
+            <h4>Commercial Properties</h4>
+            <ul>
+                <li><a href="#">Offices</a ></li>
+                <li><a href="#">Retail Spaces</a></li>
+                <li><a href="#">Warehouses</a></li>
+                <li><a href="#">Mixed-use Developments</a></li>
+            </ul>
+        </div>
+        <div class="contact-content">
+            <h4>Rental Properties</h4>
+            <ul>
+                <li><a href="#">Long-term Rentals</a></li>
+                <li><a href="#">Short-term Rentals</a></li>
+                <li><a href="#">Vacation Homes</a></li>
+                <li><a href="#">Student Housing</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <script>
+        const properties = [
+            { name: "The Olive Grove", location: "Cape Town" },
+ { name: "The Manor on Maple", location: "Johannesburg " },
+            { name: "Vineyard Estate", location: "Cape Town" },
+            { name: "Modern Family House", location: "Los Angeles, CA" },
+ { name: "Luxury Apartment", location: "New York, NY" },
+            { name: "Beachfront Villa", location: "Miami, FL" },
+            { name: "Gated Waterfront Estate", location: "Tennessee, NY" },
+ { name: "Mountain Retreat", location: "Coloroado CO" },
+            { name: "Lakefront Cottage", location: "Wisconsin, WI" },
+            { name: "Rustic Farmhouse", location: "Texas, TX" },
+ { name: "Coastal Condo", location: "California, CA" },    
+        ];
+
+        function showSuggestions(value) {
+            const suggestionsBox = document.getElementById('suggestions');
+            suggestionsBox.innerHTML = ''; // Clear previous suggestions
+
+            if (value.length === 0) {
+                return; // No input, no suggestions
+            }
+
+            const results = properties.filter(property => property.location.toLowerCase().includes(value.toLowerCase()));
+
+            results.forEach(property => {
+                const suggestionItem = document.createElement('div');
+                suggestionItem.textContent = property.name + ' - ' + property.location;
+                suggestionItem.classList.add('suggestion-item');
+                suggestionItem.onclick = () => {
+                    document.getElementById('searchInput').value = property.location; // Set input value
+                    suggestionsBox.innerHTML = ''; // Clear suggestions
+                };
+                suggestionsBox.appendChild(suggestionItem);
+            });
+        }
+
+        document.getElementById('searchForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const results = properties.filter(property => property.location.toLowerCase().includes(query));
+
+            alert('Search results: ' + results.map(p => p.name).join(', '));
+        });
+    </script>
+
+    <style>
+        .suggestions-box {
+            border: 1px solid #ddd;
+            background: rgb(31, 31, 119);
+            position: absolute;
+            z-index: 1000;
+            width: calc(100% - 20px);
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .suggestion-item {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .suggestion-item:hover {
+            background: rgb(31, 31, 119);
+        }
+    </style>
+</body>
+</html>
