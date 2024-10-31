@@ -88,15 +88,12 @@ header {
 }
 
 #menu-icon {
-    color: var(--text-color); /* Set the color */
-    font-size: 38px; /* Set the size */
+    color: var(--text-color);
+    font-size: 38px;
     margin-left: 5px;
     z-index: 10001;
     cursor: pointer;
-    display: none; /* Initially hidden on larger screens */
-    border: none; /* Ensure no border */
-    background: none; /* No background */
-    outline: none; /* Remove outline */
+    display: none;
 }
 
 section {
@@ -135,8 +132,8 @@ section {
 .h-search form input:first-child {
     display: inline-block;
     width: 100%;
-    padding: 17px 130px 0px 15px;
-    border: 0px solid var(--main-color);
+    padding: 17px 130px 16px 15px;
+    border: 2px solid var(--main-color);
     border-radius: .70rem;
 }
 
@@ -149,7 +146,7 @@ section {
     font-size: 14px;
     cursor: pointer;
     border-radius: .70rem;
-    box-shadow: 0px 0px 5px #fff, 0px 0px 0px #868686;
+    box-shadow: 0px 0px 5px #fff, 0px 0px 15px #868686;
     top: 6px;
     right: 6px;
 }
@@ -394,7 +391,6 @@ header.sticky {
     width: 270px;
     height: 100vh;
     display: flex;
-    flex-direction: column;
     background: #101821;
     padding: 20px 15px;
     gap: 0.5rem;
