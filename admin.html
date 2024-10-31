@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your existing CSS -->
+    <link rel="stylesheet" href="styles.css">
     <style>
-        /* Existing styles */
         body {
             background: #121b25;
             color: #ffffff;
@@ -53,61 +52,51 @@
     </style>
 </head>
 <body>
+    <div class="wrapper">
+        <h1>Registered Users</h1>
+        <a href="view-emails.html" class="btn">View Emails Sent to Company</a>
+        <ul class="user-list" id="userList"></ul>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/9.x/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.x/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.x/firebase-firestore.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyC1vAnYP8M1ODOc1R-A4G7RoHEtDhBEouc",
+            authDomain: "admin-control-db4c7.firebaseapp.com",
+            projectId: "admin-control-db4c7",
+            storageBucket: "admin-control-db4c7.appspot.com",
+            messagingSenderId: "93376904639",
+            appId: "1:93376904639:web:f5ea4d96e654ce46a2350a",
+            measurementId: "G-HTGVYKB0RB"
+        };
+        firebase.initializeApp(firebaseConfig);
 
-<div class="wrapper">
-    <h1>Registered Users</h1>
-    <a href="view-emails.html" class="btn">View Emails Sent to Company</a>
-    <ul class="user-list" id="userList"></ul>
-</div>
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+        const userList = document.getElementById('userList');
 
-<!-- Firebase SDK -->
-<script src="https://www.gstatic.com/firebasejs/9.x/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.x/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.x/firebase-firestore.js"></script>
-
-<!-- Initialize Firebase -->
-<script>
-    const firebaseConfig = {
-        apiKey: "AIzaSyC1vAnYP8M1ODOc1R-A4G7RoHEtDhBEouc",
-        authDomain: "admin-control-db4c7.firebaseapp.com",
-        projectId: "admin-control-db4c7",
-        storageBucket: "admin-control-db4c7.appspot.com",
-        messagingSenderId: "93376904639",
-        appId: "1:93376904639:web:f5ea4d96e654ce46a2350a",
-        measurementId: "G-HTGVYKB0RB"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    
-    const auth = firebase.auth();
-    const db = firebase.firestore();
-    const userList = document.getElementById('userList');
-
-    // Function to fetch users from Firestore
-    function fetchUsers() {
-        db.collection("users").get().then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-                const userData = doc.data();
-                const listItem = document.createElement('li');
-                listItem.textContent = `Username: ${userData.username}, Email: ${userData.email}`;
-                userList.appendChild(listItem);
+        function fetchUsers() {
+            db.collection("users").get().then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    const userData = doc.data();
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `Username: ${userData.username}, Email: ${userData.email}`;
+                    userList.appendChild(listItem);
+                });
+            }).catch((error) => {
+                console.error("Error fetching users: ", error);
             });
-        }).catch((error) => {
-            console.error("Error fetching users: ", error);
-        });
-    }
-
-    // Check authentication state
-    auth.onAuthStateChanged((user) => {
-        if (user) {
-            // User is signed in, fetch users
-            fetchUsers();
-        } else {
-            // No user is signed in, redirect or show an error
-            alert('You must be logged in to view this page.');
-            window.location.href = 'login.html'; // Redirect to your login page
         }
-    });
-</script>
+
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                fetchUsers();
+            } else {
+                alert('You must be logged in to view this page.');
+                window.location.href = 'login.html';
+            }
+        });
+    </script>
 </body>
 </html>
