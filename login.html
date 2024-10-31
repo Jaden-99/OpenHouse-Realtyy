@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Login</title>
    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-   <link rel="stylesheet" href="styles.css"> <!-- Link to your existing CSS -->
+   <link rel="stylesheet" href="styles.css">
    <style>
        body {
            background: #121b25;
@@ -69,7 +69,7 @@
            border-radius: 50%;
            width: 40px;
            height: 40px;
-           animation: spin 1s linear infinite;
+           animation: spin 3s linear infinite;
            position: absolute;
            top: 50%;
            left: 50%;
@@ -85,8 +85,8 @@
        /* Button clicked state */
        .button-clicked {
            border-radius: 50px; /* Change shape */
-           transform: scale(0.95); /* Slightly shrink */
-           transition: all 0.2s ease; /* Smooth transition */
+           transform: scale(0.75); /* Slightly shrink */
+           transition: all 0.45s ease; /* Smooth transition */
        }
    </style>
 </head>
@@ -152,7 +152,7 @@
                // Successful login
                console.log("Login successful:", userCredential);
                alert('Login successful!');
-               window.location.href = 'index.html'; // Change this to your home page
+               window.location.href = 'index.html'; 
            })
            .catch((error) => {
                const errorMessage = error.message;
