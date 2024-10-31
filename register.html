@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Register</title>
+   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+   <link rel="stylesheet" href="styles.css"> <!-- Link to your existing CSS -->
+   <style>
+       body {
+           background: #121b25;
+           color: #ffffff;
+       }
+       .wrapper {
+           max-width: 400px;
+           margin: 100px auto;
+           padding: 20px;
+           background: #1c2a35;
+           border-radius: 10px;
+           box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+       }
+       h1 {
+           text-align: center;
+           margin-bottom: 20px;
+           font-size: 2.6rem;
+       }
+       .input-box {
+           position: relative;
+           margin-bottom: 20px;
+       }
+       .input-box input {
+           width: 100%;
+           padding: 10px 10px 10px 40px;
+           border: 1px solid #1aa090;
+           border-radius: 4px;
+           background: #2a3b45;
+           color: #ffffff;
+       }
+       button.btn {
+           width: 100%;
+           padding: 10px;
+           background-color: #1aa090;
+           color: white;
+           border: none;
+           border-radius: 4px;
+           cursor: pointer;
+           transition: background-color 0.3s;
+       }
+       button.btn:hover {
+           background-color: #159a7e;
+       }
+       .login-link {
+           text-align: center;
+           margin-top: 20px;
+       }
+       .login-link a {
+           color: #1aa090;
+           transition: color 0.3s;
+       }
+       .login-link a:hover {
+           color: #ffffff;
+       }
+   </style>
+</head>
+<body>
+
+<div class="wrapper">
+   <form id="registerForm">
+       <h1>Register</h1>
+       <div class="input-box">
+           <i class='bx bxs-user'></i>
+           <input type="email" id="email" placeholder="Email" required>
+       </div>
+       <div class="input-box">
+           <i class='bx bxs-lock-alt'></i>
+           <input type="password" id="password" placeholder="Password" required>
+       </div>
+       <div class="input-box">
+           <i class='bx bxs-lock-alt'></i>
+           <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+       </div>
+
+       <button type="submit" class="btn">Register</button>
+
+       <div class="login-link">
+           <p>Already have an account? <a href="login.html">Login</a></p>
+       </div>
+   </form>
+</div>
+
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.x/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.x/firebase-auth.js"></script>
+
+<!-- Initialize Firebase -->
+<script>
+   firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+        // Successful registration
+        const user = userCredential.user;
+
+        // Store user information in Firestore
+        return firebase.firestore().collection('users').doc(user.uid).set({
+            email: email,
+            username: email.split('@')[0], // Example to get a username from email
+            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        });
+    })
+    .then(() => {
+        alert('Registration successful!');
+        window.location.href = 'login.html'; // Redirect to login page
+    })
+    .catch((error) => {
+        const errorMessage = error.message;
+        alert(errorMessage); // Display error message
+    });
+</script>
+
+<script>
+   document.getElementById('registerForm').addEventListener('submit', function(event) {
+       event.preventDefault();
+
+       const email = document.getElementById('email').value;
+       const password = document.getElementById('password').value;
+       const confirmPassword = document.getElementById('confirmPassword').value;
+
+       if (password !== confirmPassword) {
+           alert('Passwords do not match');
+           return;
+       }
+
+       firebase.auth().createUserWithEmailAndPassword(email, password)
+           .then((userCredential) => {
+               // Successful registration
+               alert('Registration successful!');
+               window.location.href = 'login.html'; // Redirect to login page
+           })
+           .catch((error) => {
+               // Handle Errors here.
+               const errorMessage = error.message;
+               alert(errorMessage); // Display error message
+           });
+   });
+</script>
+</body>
+</html>
