@@ -5,63 +5,90 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Login</title>
    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-   <link rel="stylesheet" href="styles.css">
+   <link rel="stylesheet" href="styles.css"> <!-- Link to your existing CSS -->
    <style>
-    body {
-        background: #121b25;
-        color: #ffffff;
-    }
-    .wrapper {
-        max-width: 400px;
-        margin: 100px auto;
-        padding: 20px;
-        background: #1c2a35;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    }
-    h1 {
-        text-align: center;
-        margin-bottom: 20px;
-        font-size: 2.6rem;
-    }
-    .input-box {
-        position: relative;
-        margin-bottom: 20px;
-    }
-    .input-box input {
-        width: 100%;
-        padding: 10px 10px 10px 40px;
-        border: 1px solid #1aa090;
-        border-radius: 4px;
-        background: #2a3b45;
-        color: #ffffff;
-    }
-    button.btn {
-        width: 100%;
-        padding: 10px;
-        background-color: #1aa090;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-    button.btn:hover {
-        background-color: #159a7e;
-    }
-    .register-link {
-        text-align: center;
-        margin-top: 20px;
-    }
-    .register-link a {
-        color: #1aa090;
-        transition: color 0.3s;
-    }
-    .register-link a:hover {
-        color: #ffffff;
-    }
-</style>
+       body {
+           background: #121b25;
+           color: #ffffff;
+       }
+       .wrapper {
+           max-width: 400px;
+           margin: 100px auto;
+           padding: 20px;
+           background: #1c2a35;
+           border-radius: 10px;
+           box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+           position: relative; /* Added for spinner positioning */
+       }
+       h1 {
+           text-align: center;
+           margin-bottom: 20px;
+           font-size: 2.6rem;
+       }
+       .input-box {
+           position: relative;
+           margin-bottom: 20px;
+       }
+       .input-box input {
+           width: 100%;
+           padding: 10px 10px 10px 40px;
+           border: 1px solid #1aa090;
+           border-radius: 4px;
+           background: #2a3b45;
+           color: #ffffff;
+       }
+       button.btn {
+           width: 100%;
+           padding: 10px;
+           background-color: #1aa090;
+           color: white;
+           border: none;
+           border-radius: 4px;
+           cursor: pointer;
+           transition: background-color 0.3s;
+       }
+       button.btn:hover {
+           background-color: #159a7e;
+       }
+       .register-link {
+           text-align: center;
+           margin-top: 20px;
+       }
+       .register-link a {
+           color: #1aa090;
+           transition: color 0.3s;
+       }
+       .register-link a:hover {
+           color: #ffffff;
+       }
 
+       /* Loading Spinner Styles */
+       .loader {
+           border: 4px solid rgba(255, 255, 255, 0.3);
+           border-top: 4px solid #1aa090;
+           border-radius: 50%;
+           width: 40px;
+           height: 40px;
+           animation: spin 1s linear infinite;
+           position: absolute;
+           top: 50%;
+           left: 50%;
+           transform: translate(-50%, -50%);
+           display: none; /* Hidden by default */
+       }
+
+       @keyframes spin {
+           0% { transform: rotate(0deg); }
+           100% { transform: rotate(360deg); }
+       }
+
+       /* Button clicked state */
+       .button-clicked {
+           border-radius: 50px; /* Change shape */
+           transform: scale(0.95); /* Slightly shrink */
+           transition: all 0.2s ease; /* Smooth transition */
+       }
+   </style>
 </head>
 <body>
 
@@ -83,6 +110,7 @@
            <p>Don't have an account? <a href="sign-up.html">Register</a></p>
        </div>
    </form>
+   <div class="loader" id="loader"></div> <!-- Loader element -->
 </div>
 
 <!-- Firebase SDK -->
@@ -104,8 +132,17 @@
    const app = initializeApp(firebaseConfig);
    const auth = getAuth(app);
 
+   const loginButton = document.querySelector('.btn');
+
    document.getElementById('loginForm').addEventListener('submit', function(event) {
        event.preventDefault();
+
+       // Add clicked state to button
+       loginButton.classList.add('button-clicked');
+
+       // Show loader when the button is clicked
+       const loader = document.getElementById('loader');
+       loader.style.display = 'block';
 
        const email = document.getElementById('email').value;
        const password = document.getElementById('password').value;
@@ -115,12 +152,18 @@
                // Successful login
                console.log("Login successful:", userCredential);
                alert('Login successful!');
-               window.location.href = 'admin.html'; // Redirect to admin page
+               window.location.href = 'index.html'; // Change this to your home page
            })
            .catch((error) => {
                const errorMessage = error.message;
                console.error("Error during login:", error); // Log the error for debugging
                alert(errorMessage); // Display error message
+           })
+           .finally(() => {
+               // Hide loader after processing
+               loader.style.display = 'none';
+               // Remove clicked state from button
+               loginButton.classList.remove('button-clicked');
            });
    });
 </script>
