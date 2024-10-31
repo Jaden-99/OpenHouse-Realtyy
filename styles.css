@@ -93,14 +93,11 @@ header {
     margin-left: 5px;
     z-index: 10001;
     cursor: pointer;
-    display: none; /* Initially hidden on larger screens */
-    border: none; /* Ensure no border */
-    background: none; /* No background */
-    outline: none; /* Remove outline */
+    display: none;
 }
 
 section {
-    padding:  100px 15% 70px;
+    padding: 100px 15% 70px; 
 }
 
 .home {
@@ -167,7 +164,7 @@ section {
 
 header.sticky {
     padding: 8px 15px;
-    background: #101821;
+    background: #101821; 
 }
 
 .feature {
@@ -382,8 +379,6 @@ header.sticky {
     }
 }
 
-/* Other styles remain unchanged */
-
 @media (max-width: 1170px) {
     #menu-icon {
         display: block;
@@ -410,25 +405,21 @@ header.sticky {
     .navbar.open {
         right: 0;
     }
-
     :root {
         --h1-font: 4rem;
         --h2-font: 2rem;
         --p-font: 1rem;
     }
-    
     .home {
         grid-template-columns: 1fr;
         gap: 1rem;
         height: 120vh;
     }
-    
     .home-text {
         order: 2;
         width: 100%;
         max-width: fit-content;
     }
-    
     .home-img {
         width: 300px;
         height: 300px;
