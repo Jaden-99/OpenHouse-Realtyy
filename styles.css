@@ -135,8 +135,8 @@ section {
 .h-search form input:first-child {
     display: inline-block;
     width: 100%;
-    padding: 17px 130px 16px 15px;
-    border: 2px solid var(--main-color);
+    padding: 17px 130px 0px 15px;
+    border: 0px solid var(--main-color);
     border-radius: .70rem;
 }
 
