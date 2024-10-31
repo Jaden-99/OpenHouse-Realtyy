@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Emails</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your existing CSS -->
+    <link rel="stylesheet" href="styles.css">
     <style>
         body {
             background: #121b25;
@@ -39,21 +39,19 @@
     </style>
 </head>
 <body>
+    <div class="wrapper">
+        <h1>Emails Sent to the Company</h1>
+        <ul class="email-list" id="emailList"></ul>
+    </div>
+    <script>
+        const emails = JSON.parse(localStorage.getItem('emails')) || [];
+        const emailList = document.getElementById('emailList');
 
-<div class="wrapper">
-    <h1>Emails Sent to the Company</h1>
-    <ul class="email-list" id="emailList"></ul>
-</div>
-
-<script>
-    const emails = JSON.parse(localStorage.getItem('emails')) || [];
-    const emailList = document.getElementById('emailList');
-
-    emails.forEach(email => {
-        const listItem = document.createElement('li');
-        listItem.textContent = `Name: ${email.name}, Email: ${email.email}, Message: ${email.message}`;
-        emailList.appendChild(listItem);
-    });
-</script>
+        emails.forEach(email => {
+            const listItem = document.createElement('li');
+            listItem.textContent = `Name: ${email.name}, Email: ${email.email}, Message: ${email.message}`;
+            emailList.appendChild(listItem);
+        });
+    </script>
 </body>
 </html>
