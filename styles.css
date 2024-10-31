@@ -88,12 +88,15 @@ header {
 }
 
 #menu-icon {
-    color: var(--text-color);
-    font-size: 38px;
+    color: var(--text-color); /* Set the color */
+    font-size: 38px; /* Set the size */
     margin-left: 5px;
     z-index: 10001;
     cursor: pointer;
-    display: none;
+    display: none; /* Initially hidden on larger screens */
+    border: none; /* Ensure no border */
+    background: none; /* No background */
+    outline: none; /* Remove outline */
 }
 
 section {
